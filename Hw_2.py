@@ -62,13 +62,11 @@ def sort_by_age(student_list):
     for data in student_list:
         if data.get('city') in sorted_dict.keys():
             sorted_dict[data.get('city')].append(data)
+            data.pop('city')
         else:
             sorted_dict[data.get('city')] = []
             sorted_dict[data.get('city')].append(data)
-
-    for key, value in sorted_dict.items():
-        for city in value:
-            city.pop('city')
+            data.pop('city')
 
     return sorted_dict
 
