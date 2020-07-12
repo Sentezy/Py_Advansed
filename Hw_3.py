@@ -11,16 +11,16 @@ def do_cache(maxsize):
         value = {}
 
         def wrapper(*args):
+            
+            result = func(*args)
 
             if args in value:
                 return value[args]
             if maxsize == len(value):
                 value.popitem()
-                result = func(*args)
                 value[args] = result
                 return result
             if args not in value:
-                result = func(*args)
                 value[args] = result
                 return result
 
