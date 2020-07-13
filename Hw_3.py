@@ -20,11 +20,9 @@ def do_cache(maxsize):
                 value.popitem()
                 value[args] = result
                 return result
-            if args not in value:
+            else:
                 value[args] = result
                 return result
-
-            return value
 
         return wrapper
 
