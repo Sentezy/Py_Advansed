@@ -6,10 +6,9 @@ import os        # <- Только ради правильного сепара�
 
 def counter(func):
     def wrapper(*args):
-        file_name = args[0].split(os.sep)[-1]
-        word = len(func(*args).split())
-        return f"File name : {file_name}    " \
-               f"Word count : {word}" \
+        
+        return f"File name : {args[0].split(os.sep)[-1]}    " \
+               f"Word count : {len(func(*args).split())}" \
                f"\n{func(*args)}"  # <- Если надо текст файла
 
     return wrapper
