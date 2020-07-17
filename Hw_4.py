@@ -15,7 +15,7 @@ def file_reader(func):
                 with open(f"{args[0]}{file}", "r", encoding="utf-8") as data:
                     print(data.read())
 
-        return f"Files in path: {func(*args)}"  
+        return func(*args)  
                                                
     return wrapper
 
