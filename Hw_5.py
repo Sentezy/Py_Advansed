@@ -9,7 +9,7 @@ def counter(func):
         
         return f"File name : {args[0].split(os.sep)[-1]}    " \
                f"Word count : {len(func(*args).split())}" \
-               f"\n{func(*args)}"  # <- Если надо текст файла
+               f"\n{func(*args)}"  
 
     return wrapper
 
