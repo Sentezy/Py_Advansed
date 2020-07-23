@@ -12,10 +12,10 @@ class Time:
         self.seconds = s
 
     def __repr__(self):
-        return f"Time : {self._hours}:{self._minutes}:{self._seconds}"
+        return f"Time : {self.hours}:{self.minutes}:{self.seconds}"
 
     def __str__(self):
-        return f"Time : {self._hours}:{self._minutes}:{self._seconds}"
+        return f"Time : {self.hours}:{self.minutes}:{self.seconds}"
 
     @property
     def hours(self):
