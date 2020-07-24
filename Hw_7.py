@@ -22,9 +22,9 @@ class Time:
         return self._hours
 
     @hours.setter
-    def hours(self, hours):
+    def hours(self, h):
         if 0 <= hours <= 23:
-            self._hours = hours
+            self._hours = h
         else:
             self._hours = 23
 
@@ -33,9 +33,9 @@ class Time:
         return self._minutes
 
     @minutes.setter
-    def minutes(self, minutes):
+    def minutes(self, m:
         if 0 <= minutes <= 59:
-            self._minutes = minutes
+            self._minutes = m
         else:
             self._minutes = 59
 
@@ -44,27 +44,27 @@ class Time:
         return self._seconds
 
     @seconds.setter
-    def seconds(self, seconds):
+    def seconds(self, s):
         if 0 <= seconds <= 59:
-            self._seconds = seconds
+            self._seconds = s
         else:
             self._seconds = 59
 
-    def up_hours(self, hours):
-        self._hours += hours
+    def up_hours(self, h):
+        self._hours += h
         while self._hours > 23:
             self._hours -= 24
 
-    def up_minutes(self, minutes):
-        self._minutes = self._minutes + minutes
+    def up_minutes(self, m):
+        self._minutes = self._minutes + m
         while self._minutes > 59:
             self._minutes -= 60
             self._hours += 1
             if self._hours > 23:
                 self._hours = 0
 
-    def up_seconds(self, seconds):
-        self._seconds = self._seconds + seconds
+    def up_seconds(self, s):
+        self._seconds = self._seconds + s
         while self._seconds > 59:
             self._seconds -= 60
             self._minutes += 1
