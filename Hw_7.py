@@ -56,7 +56,7 @@ class Time:
             self._hours -= 24
 
     def up_minutes(self, m):
-        self._minutes = self._minutes + m
+        self._minutes += m
         while self._minutes > 59:
             self._minutes -= 60
             self._hours += 1
@@ -64,7 +64,7 @@ class Time:
                 self._hours = 0
 
     def up_seconds(self, s):
-        self._seconds = self._seconds + s
+        self._seconds += s
         while self._seconds > 59:
             self._seconds -= 60
             self._minutes += 1
