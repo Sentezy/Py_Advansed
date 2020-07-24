@@ -33,7 +33,7 @@ class Time:
         return self._minutes
 
     @minutes.setter
-    def minutes(self, m:
+    def minutes(self, m):
         if 0 <= minutes <= 59:
             self._minutes = m
         else:
