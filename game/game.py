@@ -1,5 +1,5 @@
 from logger import MyLogger
-log = MyLogger('log')
+
 
 
 class Room:
@@ -14,20 +14,19 @@ class Room:
         :param name: room name
         :param description: room description
         """
-        self.log = log
         self.x = x
         self.y = y
         self.name = name
         self.description = description
         self.exits = exits
+        self.log = MyLogger('Room')
 
     def __str__(self):
-        log.info("in __str__", )
-        log.warning("in __str__", )
+        self.log.warning('__str__')
         return f'{self.name}\n{self.description}'
 
     def _check_exit(self, direction):
-        self.log.warning('in exit', )
+        self.log.info('in init')
         return direction in self.exits
 
 
@@ -40,29 +39,27 @@ class Game:
     }
 
     def __init__(self, map):
-
-        self.log = log
+        self.log = MyLogger('Game')
         self.player_x = 0
         self.player_y = 0
         self.map = map
         self.current_room = self._get_room(0, 0)
+
         self._look_at(self.current_room)
 
     def _move(self, x, y):
         new_room = self._get_room(x, y)
         if new_room:
-            self.log.info('in new room', )
             self.current_room = new_room
             self.player_x += x
             self.player_y += y
             self._look_at(self.current_room)
         else:
-            self.log.error('Lol', )
             print('Error: missing room')
 
     def _get_room(self, x, y):
-        self.log.info('In get room', )
         coords = (x, y)
+        self.log.warning('lol')
         room = self.map.get(coords)
         return room
 
@@ -91,3 +88,4 @@ if __name__ == '__main__':
            }
     game = Game(map)
     game.run()
+
