@@ -15,6 +15,23 @@ if __name__ == "__main__":
     receiver_2, sender_2 = Pipe()
 
     sender_1.send("ping")
+
     process_1 = Process(target=ponger, args=(receiver_2, sender_1, "ping")).start()
     process_2 = Process(target=ponger, args=(receiver_1, sender_2, "pong")).start()
 
+
+# Второй вариант с одной трубой
+
+# def ponger(pipe, response):
+#     while True:
+#         print(f"Process {getpid()} got massege: {pipe.recv()}")
+#         sleep(2)
+#         pipe.send(response)
+#
+#
+# receiver, sender = Pipe()
+#
+# sender.send('ping')
+
+# process_1 = Process(target=ponger, args=(sender, 'ping')).start()
+# process_2 = Process(target=ponger, args=(receiver, 'pong')).start()
