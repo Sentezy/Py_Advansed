@@ -11,7 +11,7 @@ class Calculator(tk.Frame):
         self.pack()
         self.log = ''
         self._create_main_interface()
-        self.push = 0
+        
 
     def _create_main_interface(self):
 
