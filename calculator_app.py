@@ -114,11 +114,9 @@ class Calculator(tk.Frame):
             except ZeroDivisionError:
                 log_out = " No way!"
             except SyntaxError:
-                log_out = "Only numbers!"
-            except TypeError:
-                log_out = " Error!"
+                log_out = "SyntaxError: Be careful!"
             except NameError:
-                log_out = 'Its just calculator! '
+                log_out = 'Its just calculator: Only numbers!'
             finally:
                 self.log += f'\n{log_out}'
                 self.log_label.configure(text=self.log)
