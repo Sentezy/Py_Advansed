@@ -12,7 +12,7 @@ class Calculator(tk.Frame):
         self.log = ''
         self._create_main_interface()
         self._create_buttons()
-        self._create_data()
+        self._create_log()
         self._create_display()
 
     def _create_main_interface(self):
@@ -50,28 +50,28 @@ class Calculator(tk.Frame):
 
         self.display.focus()
 
-    def _create_data(self):
+    def _create_log(self):
 
-        self.data_frame = tk.Frame(self.main_canvas,
-                                   bg='#808080',
-                                   bd=5)
+        self.log_frame = tk.Frame(self.main_canvas,
+                                  bg='#808080',
+                                  bd=5)
 
-        self.data_frame.place(relx=0.5, rely=0.01,
-                              relwidth=0.99,
-                              relheight=0.39,
-                              anchor='n')
+        self.log_frame.place(relx=0.5, rely=0.01,
+                             relwidth=0.99,
+                             relheight=0.39,
+                             anchor='n')
 
-        self.data_label = tk.Label(self.data_frame,
-                                   bg='#000',
-                                   bd=5,
-                                   foreground="#fff",
-                                   font=("Palatino Linotype", 15, "bold"),
-                                   anchor='sw')
+        self.log_label = tk.Label(self.log_frame,
+                                  bg='#000',
+                                  bd=5,
+                                  foreground="#fff",
+                                  font=("Palatino Linotype", 15, "bold"),
+                                  anchor='sw')
 
-        self.data_label.place(relx=0.5, rely=0.01,
-                              relwidth=1.02,
-                              relheight=1,
-                              anchor='n')
+        self.log_label.place(relx=0.5, rely=0.01,
+                             relwidth=1.02,
+                             relheight=1,
+                             anchor='n')
 
     def _create_buttons(self):
 
@@ -108,21 +108,24 @@ class Calculator(tk.Frame):
     def _calculations(self, op):
 
         if op == '=':
-            if self.display.get().isalpha():
-                self.display.delete(0, 'end')
-                self.display.insert('end', 'Its just calculator! ')
             try:
                 result = eval(self.display.get())
                 self.display.insert('end', '=' + str(result))
                 self.log += f'\n{str(self.display.get())}'
-                self.data_label.configure(text=self.log)
+                self.log_label.configure(text=self.log)
                 self.display.delete(0, 'end')
             except ZeroDivisionError:
+                self.display.delete(0, 'end')
                 self.display.insert('end', " No way!")
             except SyntaxError:
+                self.display.delete(0, 'end')
                 self.display.insert('end', " Error!")
             except TypeError:
-                self.display.insert('0', " Error!")
+                self.display.delete(0, 'end')
+                self.display.insert('end', " Error!")
+            except NameError:
+                self.display.delete(0, 'end')
+                self.display.insert('end', 'Its just calculator! ')
 
         elif op == 'C':
             self.display.delete(0, 'end')
@@ -130,7 +133,7 @@ class Calculator(tk.Frame):
         elif op == 'CE':
             self.display.delete(0, 'end')
             self.log = ''
-            self.data_label.config(text=self.log)
+            self.log_label.config(text=self.log)
 
         elif op == "xⁿ":
             self.display.insert('end', "**")
