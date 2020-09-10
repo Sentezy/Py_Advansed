@@ -110,7 +110,7 @@ class Calculator(tk.Frame):
         if op == '=':
             try:
                 result = round(eval(self.display.get()), 2)
-                self.display.insert('end', '=' + str(result))
+                self.display.insert('end', ' = ' + str(result))
                 self.log += f'\n{str(self.display.get())}'
                 self.log_label.configure(text=self.log)
                 self.display.delete(0, 'end')
