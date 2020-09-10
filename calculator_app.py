@@ -106,26 +106,23 @@ class Calculator(tk.Frame):
                 row += 1
 
     def _calculations(self, op):
-
+        display_input = self.display.get()
         if op == '=':
             try:
-                result = round(eval(self.display.get()), 2)
-                self.display.insert('end', ' = ' + str(result))
-                self.log += f'\n{str(self.display.get())}'
+                result = round(eval(display_input), 2)
+                log_out = f'{display_input} = {result} '
+            except ZeroDivisionError:
+                log_out = " No way!"
+            except SyntaxError:
+                log_out = "Only numbers!"
+            except TypeError:
+                log_out = " Error!"
+            except NameError:
+                log_out = 'Its just calculator! '
+            finally:
+                self.log += f'\n{log_out}'
                 self.log_label.configure(text=self.log)
                 self.display.delete(0, 'end')
-            except ZeroDivisionError:
-                self.display.delete(0, 'end')
-                self.display.insert('end', " No way!")
-            except SyntaxError:
-                self.display.delete(0, 'end')
-                self.display.insert('end', " Error!")
-            except TypeError:
-                self.display.delete(0, 'end')
-                self.display.insert('end', " Error!")
-            except NameError:
-                self.display.delete(0, 'end')
-                self.display.insert('end', 'Its just calculator! ')
 
         elif op == 'C':
             self.display.delete(0, 'end')
