@@ -147,5 +147,6 @@ class Calculator(tk.Frame):
 if __name__ == '__main__':
     root = tk.Tk()
     root.title('Calculator')
+    root.resizable(width=False, height=False)
     app = Calculator(master=root)
     app.mainloop()
