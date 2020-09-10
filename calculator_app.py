@@ -37,9 +37,9 @@ class Calculator(tk.Frame):
                                  anchor='n')
 
         self.display = tk.Entry(self.display_frame,
-                                bg='#000',
+                                bg='#808080',
                                 bd=5, foreground="#fff",
-                                font=("Palatino Linotype", 15, "bold"),
+                                font=("Palatino Linotype", 17, "bold"),
                                 relief='ridge',
                                 justify='l')
 
